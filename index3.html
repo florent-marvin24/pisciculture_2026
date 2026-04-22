@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sondage Pisciculture 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .serif { font-family: 'Playfair Display', serif; }
+        
+        .chip-input { display: none; }
+        
+        .chip-label {
+            display: inline-block;
+            padding: 8px 20px;
+            border: 1px solid #e5e7eb;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: white;
+            color: #374151;
+            font-size: 0.95rem;
+        }
+
+        /* Couleur d'accentuation Aqua Pro lors de la sélection */
+        .chip-input:checked + .chip-label {
+            background-color: #137885;
+            color: white;
+            border-color: #137885;
+        }
+
+        .star-rating {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-start;
+        }
+        .star-rating input { display: none; }
+        .star-rating label {
+            font-size: 2rem;
+            color: #d1d5db;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .star-rating label:hover,
+        .star-rating label:hover ~ label,
+        .star-rating input:checked ~ label {
+            color: #fbbf24;
+        }
+    </style>
+</head>
+<body class="bg-[#f8fafc] min-h-screen pb-12">
+
+    <div class="bg-[#0a5462] text-white p-8 pt-12 text-center rounded-b-[3rem] shadow-xl relative overflow-hidden border-b-4 border-[#137885]">
+        <div class="inline-block bg-[#137885]/70 px-4 py-1 rounded-full text-xs font-bold tracking-widest mb-6 border border-cyan-300/20">
+            🚀 ÉTUDE DE MARCHÉ PISCICULTURE · 2026
+        </div>
+        <h1 class="text-4xl serif italic mb-4">Vos préférences en <br><span class="text-[#9ee1df]">poisson frais</span></h1>
+        <p class="max-w-md mx-auto text-sm leading-relaxed opacity-90 text-[#fdfcfb]">
+            Ce sondage vise à mieux comprendre les habitudes de consommation des populations de Yaoundé et Mbalmayo afin de développer une production locale adaptée.
+        </p>
+        <div class="flex justify-center gap-4 mt-6 text-3xl">
+            <span>🐟</span><span>🐠</span><span>🐡</span>
+        </div>
+    </div>
+
+    <form action="https://formspree.io/f/xyklyler" method="POST" class="max-w-xl mx-auto -mt-6 px-4 space-y-6">
+        
+        <div class="bg-white rounded-3xl p-6 shadow-sm border border-cyan-100/50">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="bg-[#0a5462] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">1</span>
+                <div>
+                    <h2 class="text-xl font-bold text-gray-800 serif">Votre profil</h2>
+                    <p class="text-xs text-gray-400">Quelques informations générales pour segmenter les résultats.</p>
+                </div>
+            </div>
+
+            <div class="space-y-5">
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-2">Nom et Prénom (optionnel)</label>
+                    <input type="text" name="nom_prenom" placeholder="Ex : John Doe" class="w-full bg-gray-50 border border-gray-100 rounded-2xl p-4 outline-none focus:ring-2 focus:ring-[#137885] transition">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-2">Âge *</label>
+                    <input type="number" name="age" placeholder="Ex : 32" required class="w-full bg-gray-50 border border-gray-100 rounded-2xl p-4 outline-none focus:ring-2 focus:ring-[#137885]">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-2">Sexe</label>
+                    <div class="flex flex-wrap gap-2">
+                        <input type="radio" name="sexe" value="Feminin" id="f" class="chip-input" required><label for="f" class="chip-label">Féminin</label>
+                        <input type="radio" name="sexe" value="Masculin" id="m" class="chip-input"><label for="m" class="chip-label">Masculin</label>
+                        <input type="radio" name="sexe" value="Non-dit" id="nd" class="chip-input"><label for="nd" class="chip-label">Préfère ne pas dire</label>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-2">Ville de résidence *</label>
+                    <div class="flex flex-wrap gap-2">
+                        <input type="radio" name="ville" value="Yaounde" id="y" class="chip-input" required><label for="y" class="chip-label">Yaoundé</label>
+                        <input type="radio" name="ville" value="Mbalmayo" id="mb" class="chip-input"><label for="mb" class="chip-label">Mbalmayo</label>
+                        <input type="radio" name="ville" value="Autre" id="a" class="chip-input"><label for="a" class="chip-label">Autre ville</label>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-gray-800 mb-2">Quartier / Zone</label>
+                    <input type="text" name="quartier" placeholder="Ex : Biyem-Assi" class="w-full bg-gray-50 border border-gray-100 rounded-2xl p-4 outline-none focus:ring-2 focus:ring-[#137885] transition-all placeholder:text-gray-300">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-gray-800 mb-4">Taille du foyer</label>
+                    <div class="flex flex-wrap gap-2">
+                        <input type="radio" name="foyer_taille" value="1" id="f1" class="chip-input"><label for="f1" class="chip-label">1 pers.</label>
+                        <input type="radio" name="foyer_taille" value="2-3" id="f2" class="chip-input"><label for="f2" class="chip-label">2-3 pers.</label>
+                        <input type="radio" name="foyer_taille" value="4-6" id="f3" class="chip-input"><label for="f3" class="chip-label">4-6 pers.</label>
+                        <input type="radio" name="foyer_taille" value="7+" id="f4" class="chip-input"><label for="f4" class="chip-label">7+</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-3xl p-6 shadow-sm border border-cyan-100/50">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="bg-[#0a5462] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">2</span>
+                <h2 class="text-xl font-bold text-gray-800 serif">Habitudes de consommation</h2>
+            </div>
+
+            <div class="space-y-6">
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-3">À quelle fréquence consommez-vous du poisson ?</label>
+                    <div class="flex flex-wrap gap-2">
+                        <input type="radio" name="freq" value="Tous les jours" id="fr1" class="chip-input"><label for="fr1" class="chip-label">Tous les jours</label>
+                        <input type="radio" name="freq" value="3-5 fois/sem" id="fr2" class="chip-input"><label for="fr2" class="chip-label">3-5 fois/sem.</label>
+                        <input type="radio" name="freq" value="1-2 fois/sem." id="fr4" class="chip-input"><label for="fr4" class="chip-label">1-2 fois/sem.</label>
+                        <input type="radio" name="freq" value="2-3 fois/mois" id="fr5" class="chip-input"><label for="fr5" class="chip-label">2-3 fois/mois</label>
+                        <input type="radio" name="freq" value="Rarement" id="fr3" class="chip-input"><label for="fr3" class="chip-label">Rarement</label>
+                        <input type="radio" name="freq" value="jamais" id="fr6" class="chip-input"><label for="fr6" class="chip-label">Jamais</label>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-3">Où achetez-vous votre poisson ?</label>
+                    <div class="flex flex-wrap gap-2">
+                        <input type="checkbox" name="lieu_marche" id="l1" class="chip-input"><label for="l1" class="chip-label">Marché traditionnel</label>
+                        <input type="checkbox" name="lieu_Supermarche" id="l5" class="chip-input"><label for="l5" class="chip-label">Supermarché</label>
+                        <input type="checkbox" name="lieu_eleveur" id="l2" class="chip-input"><label for="l2" class="chip-label">Chez un éleveur</label>
+                        <input type="checkbox" name="lieu_livraison" id="l3" class="chip-input"><label for="l3" class="chip-label">En ligne / livraison</label>
+                        <input type="checkbox" name="lieu_vendeur_ambulant" id="l4" class="chip-input"><label for="l4" class="chip-label">Vendeur ambulant</label>
+                        <input type="checkbox" name="lieu_restaurant" id="l6" class="chip-input"><label for="l6" class="chip-label">Maquis/Restaurant</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-3xl p-6 shadow-sm border border-cyan-100/50">
+            <div class="flex items-center gap-3 mb-2">
+                <span class="bg-[#0a5462] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">3</span>
+                <h2 class="text-xl font-bold text-gray-800 serif">Préférences par espèce</h2>
+            </div>
+            <p class="text-sm text-gray-500 mb-6 italic">Notez chaque poisson de 1 à 5 étoiles selon vos préférences.</p>
+
+            <div class="bg-gray-50 rounded-2xl p-4 mb-4 text-center">
+                <span class="text-4xl">🐟</span>
+                <h3 class="font-bold text-gray-800 mt-2">Silure</h3>
+                <p class="text-xs italic text-gray-400 mb-3">Siluriformes</p>
+                <div class="star-rating inline-flex">
+                    <input type="radio" name="rate_silure" value="5" id="s5"><label for="s5">★</label>
+                    <input type="radio" name="rate_silure" value="4" id="s4"><label for="s4">★</label>
+                    <input type="radio" name="rate_silure" value="3" id="s3"><label for="s3">★</label>
+                    <input type="radio" name="rate_silure" value="2" id="s2"><label for="s2">★</label>
+                    <input type="radio" name="rate_silure" value="1" id="s1"><label for="s1">★</label>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 rounded-2xl p-4 text-center">
+                <span class="text-4xl">🐡</span>
+                <h3 class="font-bold text-gray-800 mt-2">Tilapia</h3>
+                <p class="text-xs italic text-gray-400 mb-3">Oreochromis niloticus</p>
+                <div class="star-rating inline-flex">
+                    <input type="radio" name="rate_tilapia" value="5" id="t5"><label for="t5">★</label>
+                    <input type="radio" name="rate_tilapia" value="4" id="t4"><label for="t4">★</label>
+                    <input type="radio" name="rate_tilapia" value="3" id="t3"><label for="t3">★</label>
+                    <input type="radio" name="rate_tilapia" value="2" id="t2"><label for="t2">★</label>
+                    <input type="radio" name="rate_tilapia" value="1" id="t1"><label for="t1">★</label>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 rounded-2xl p-4 text-center">
+                <span class="text-4xl">🐠</span>
+                <h3 class="font-bold text-gray-800 mt-2">Carpe</h3>
+                <p class="text-xs italic text-gray-400 mb-3">Cyprianus carpio</p>
+                <div class="star-rating inline-flex">
+                    <input type="radio" name="rate_tilapia" value="5" id="t5"><label for="t5">★</label>
+                    <input type="radio" name="rate_tilapia" value="4" id="t4"><label for="t4">★</label>
+                    <input type="radio" name="rate_tilapia" value="3" id="t3"><label for="t3">★</label>
+                    <input type="radio" name="rate_tilapia" value="2" id="t2"><label for="t2">★</label>
+                    <input type="radio" name="rate_tilapia" value="1" id="t1"><label for="t1">★</label>
+                </div>
+            </div>
+
+                    <div class="mt-8 pt-6 border-t border-gray-100">
+                <label class="block text-sm font-bold text-gray-800 mb-4">Espèce globalement préférée</label>
+                <div class="flex flex-wrap gap-2">
+                    <input type="radio" name="pref_globale" value="Silure" id="pg1" class="chip-input"><label for="pg1" class="chip-label">Silure</label>
+                    <input type="radio" name="pref_globale" value="Carpe" id="pg2" class="chip-input"><label for="pg2" class="chip-label">Carpe</label>
+                    <input type="radio" name="pref_globale" value="Tilapia" id="pg3" class="chip-input"><label for="pg3" class="chip-label">Tilapia</label>
+                    <input type="radio" name="pref_globale" value="Aucune" id="pg4" class="chip-input"><label for="pg4" class="chip-label">Aucune préférence</label>
+                </div>
+            </div>
+        </div>
+    
+        </div>
+
+
+        <div class="bg-white rounded-3xl p-6 shadow-sm border border-emerald-100/50">
+    <div class="flex items-center gap-3 mb-2">
+        <span class="bg-[#0a5462] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">4</span>
+        <h2 class="text-xl font-bold text-gray-800 serif">Budget et prix</h2>
+    </div>
+    <p class="text-sm text-gray-500 mb-8">Votre capacité de dépense pour le poisson.</p>
+
+    <div class="mb-10">
+        <label class="block text-sm font-bold text-gray-800 mb-6">Budget hebdomadaire moyen (FCFA)</label>
+        <div class="px-2">
+            <input type="range" 
+                   name="budget_range" 
+                   id="budgetSlider"
+                   min="500" 
+                   max="30000" 
+                   value="500" 
+                   step="500" 
+                   class="w-full h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#0a5462]"
+                   oninput="updateBudgetValue(this.value)">
+            
+            <div class="flex justify-between text-[10px] text-gray-400 mt-2 font-bold uppercase tracking-wider">
+                <span>500 F</span>
+                <span>30000 F</span>
+            </div>
+
+            <div class="text-center mt-6">
+                <span id="displayAmount" class="text-4xl serif text-[#0a5462] font-bold transition-all">500</span>
+                <span class="text-2xl serif text-[#0a5462] font-bold ml-1">FCFA</span>
+            </div>
+            
+            <input type="hidden" name="Budget_Hebdomadaire_Final" id="finalBudgetValue" value="500">
+        </div>
+
+        <div class="mb-8">
+        <label class="block text-sm font-bold text-gray-800 mb-4">Prix raisonnable pour 1 kg de poisson frais ?</label>
+        <div class="grid grid-cols-2 gap-3">
+            <input type="radio" name="prix_raisonnable_kg" value="Moins 1500" id="pr1" class="chip-input">
+            <label for="pr1" class="chip-label text-center text-xs px-2">Moins de 1 500 FCFA</label>
+
+            <input type="radio" name="prix_raisonnable_kg" value="1500-2500" id="pr2" class="chip-input">
+            <label for="pr2" class="chip-label text-center text-xs px-2">1 500 – 2 500 FCFA</label>
+
+            <input type="radio" name="prix_raisonnable_kg" value="2500-4000" id="pr3" class="chip-input">
+            <label for="pr3" class="chip-label text-center text-xs px-2">2 500 – 4 000 FCFA</label>
+
+            <input type="radio" name="prix_raisonnable_kg" value="Plus 4000" id="pr4" class="chip-input">
+            <label for="pr4" class="chip-label text-center text-xs px-2">Plus de 4 000 FCFA</label>
+        </div>
+    </div>
+
+    <div class="mb-6">
+        <label class="block text-sm font-bold text-gray-800 mb-4">Prêt(e) à payer plus pour du poisson élevé localement ?</label>
+        <div class="space-y-3">
+            <div class="grid grid-cols-2 gap-3">
+                <input type="radio" name="payer_plus_local" value="Oui" id="pl1" class="chip-input">
+                <label for="pl1" class="chip-label text-center">Oui, sans hésiter</label>
+
+                <input type="radio" name="payer_plus_local" value="Peut-être" id="pl2" class="chip-input">
+                <label for="pl2" class="chip-label text-center">Peut-être (+10%)</label>
+            </div>
+            
+            <input type="radio" name="payer_plus_local" value="Non" id="pl3" class="chip-input">
+            <label for="pl3" class="chip-label w-full text-center">Non, le prix est décisif</label>
+        </div>
+    </div>
+</div> <div class="mt-8 px-2">
+    <button type="submit" class="w-full bg-[#0a5462] hover:bg-[#128ca2] text-white font-bold py-5 rounded-3xl shadow-xl transition-all active:scale-[0.98] text-lg">
+        Soumettre mes réponses
+    </button>
+    <p class="text-center text-[10px] text-gray-400 mt-4 italic">
+        Le contenu est généré par les utilisateurs et non vérifié.
+    </p>
+</div>
+    </div>
+
+    <div class="bg-white rounded-3xl p-6 shadow-sm border border-emerald-100/50">
+    <div class="flex items-center gap-3 mb-2">
+        <span class="bg-[#0a5462] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">5</span>
+        <h2 class="text-xl font-bold text-gray-800 serif">Cuisson et critères d'achat</h2>
+    </div>
+    <p class="text-sm text-gray-500 mb-8">Comment cuisinez-vous le poisson et qu'est-ce qui guide votre choix ?</p>
+
+    <div class="mb-8">
+        <label class="block text-sm font-bold text-gray-800 mb-4">Mode de cuisson préféré <span class="text-gray-400 font-normal">(plusieurs choix)</span></label>
+        <div class="flex flex-wrap gap-2">
+            <input type="checkbox" name="cuisson" value="Grillé" id="cui1" class="chip-input">
+            <label for="cui1" class="chip-label">Grillé / braisé</label>
+
+            <input type="checkbox" name="cuisson" value="Sauce" id="cui2" class="chip-input">
+            <label for="cui2" class="chip-label">En sauce</label>
+
+            <input type="checkbox" name="cuisson" value="Frit" id="cui3" class="chip-input">
+            <label for="cui3" class="chip-label">Frit</label>
+
+            <input type="checkbox" name="cuisson" value="Vapeur" id="cui4" class="chip-input">
+            <label for="cui4" class="chip-label">À la vapeur</label>
+
+            <input type="checkbox" name="cuisson" value="Fumé" id="cui5" class="chip-input">
+            <label for="cui5" class="chip-label">Fumé (tel quel)</label>
+        </div>
+    </div>
+
+    <div class="mb-4">
+        <label class="block text-sm font-bold text-gray-800 mb-4">Critère le plus important lors de l'achat ?</label>
+        <div class="flex flex-wrap gap-2">
+            <input type="radio" name="critere_principal" value="Fraîcheur" id="crit1" class="chip-input">
+            <label for="crit1" class="chip-label">Fraîcheur</label>
+
+            <input type="radio" name="critere_principal" value="Prix" id="crit2" class="chip-input">
+            <label for="crit2" class="chip-label">Prix</label>
+
+            <input type="radio" name="critere_principal" value="Taille" id="crit3" class="chip-input">
+            <label for="crit3" class="chip-label">Taille</label>
+
+            <input type="radio" name="critere_principal" value="Origine" id="crit4" class="chip-input">
+            <label for="crit4" class="chip-label">Origine locale</label>
+
+            <input type="radio" name="critere_principal" value="Accès" id="crit5" class="chip-input">
+            <label for="crit5" class="chip-label">Facilité d'accès</label>
+
+            <input type="radio" name="critere_principal" value="Hygiène" id="crit6" class="chip-input">
+            <label for="crit6" class="chip-label">Hygiène</label>
+        </div>
+    </div>
+</div>
+
+    <div class="bg-white rounded-3xl p-6 shadow-sm border border-emerald-100/50">
+    <div class="flex items-center gap-3 mb-2">
+        <span class="bg-[#0a5462] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">6</span>
+        <h2 class="text-xl font-bold text-gray-800 serif">Suggestions et contact</h2>
+    </div>
+    <p class="text-sm text-gray-500 mb-8">Aidez-nous à améliorer notre offre.</p>
+
+    <div class="mb-8">
+        <label class="block text-sm font-bold text-gray-800 mb-4">Ce qui vous inciterait à acheter plus de poisson local <span class="text-gray-400 font-normal">(plusieurs choix)</span></label>
+        <div class="flex flex-wrap gap-2">
+            <input type="checkbox" name="incitation_achat" value="Prix bas" id="inc1" class="chip-input">
+            <label for="inc1" class="chip-label">Prix plus bas</label>
+
+            <input type="checkbox" name="incitation_achat" value="Disponibilité" id="inc2" class="chip-input">
+            <label for="inc2" class="chip-label">Meilleure disponibilité</label>
+
+            <input type="checkbox" name="incitation_achat" value="Proximité" id="inc3" class="chip-input">
+            <label for="inc3" class="chip-label">Points de vente proches</label>
+
+            <input type="checkbox" name="incitation_achat" value="Livraison" id="inc4" class="chip-input">
+            <label for="inc4" class="chip-label">Livraison domicile</label>
+
+            <input type="checkbox" name="incitation_achat" value="Hygiène" id="inc5" class="chip-input">
+            <label for="inc5" class="chip-label">Emballage hygiénique</label>
+
+            <input type="checkbox" name="incitation_achat" value="Label" id="inc6" class="chip-input">
+            <label for="inc6" class="chip-label">Label qualité</label>
+        </div>
+    </div>
+
+    <div class="mb-8">
+        <label class="block text-sm font-bold text-gray-800 mb-4">Souhaiteriez-vous la livraison à domicile ?</label>
+        <div class="flex flex-wrap gap-2">
+            <input type="radio" name="souhait_livraison" value="Oui regulièrement" id="liv1" class="chip-input">
+            <label for="liv1" class="chip-label">Oui, regulièrement</label>
+
+            <input type="radio" name="souhait_livraison" value="Oui parfois" id="liv2" class="chip-input">
+            <label for="liv2" class="chip-label">Oui, parfois</label>
+
+            <input type="radio" name="souhait_livraison" value="Non" id="liv3" class="chip-input">
+            <label for="liv3" class="chip-label">Non</label>
+        </div>
+    </div>
+
+    <div class="mb-8">
+        <label class="block text-sm font-bold text-gray-800 mb-4">Vos remarques, suggestions ou espèces souhaitées</label>
+        <textarea name="remarques" rows="4" 
+                  class="w-full px-4 py-3 rounded-2xl border border-gray-200 focus:border-[#1a4731] focus:ring-1 focus:ring-[#1a4731] outline-none resize-none text-sm placeholder-gray-300"
+                  placeholder="Partagez librement vos impressions, besoins ou idées..."></textarea>
+    </div>
+
+    <div class="mb-4">
+        <label class="block text-sm font-bold text-gray-800 mb-4">Numéro WhatsApp <span class="text-gray-400 font-normal">(optionnel)</span></label>
+        <input type="tel" name="whatsapp" 
+               class="w-full px-4 py-4 rounded-2xl border border-gray-200 focus:border-[#1a4731] focus:ring-1 focus:ring-[#1a4731] outline-none text-sm placeholder-gray-300"
+               placeholder="Ex : +237 6XX XXX XXX">
+
+    </div>
+
+<script>
+    /**
+     * Met à jour l'affichage texte et le champ caché pour le formulaire
+     */
+    function updateBudgetValue(val) {
+        // Formate le nombre avec des espaces pour la lisibilité (ex: 10 000)
+        const formattedVal = Number(val).toLocaleString('fr-FR');
+        
+        // Mise à jour de l'affichage visuel
+        document.getElementById('displayAmount').innerText = formattedVal;
+        
+        // Mise à jour de la valeur envoyée par le formulaire
+        document.getElementById('finalBudgetValue').value = val + " FCFA";
+    }
+</script>
+
+        <button type="submit" class="w-full bg-[#0a5462] hover:bg-[#128ca2] text-white font-bold py-5 rounded-3xl shadow-lg transition transform active:scale-95 text-lg">
+            Soumettre mes réponses
+        </button>
+
+    </form>
+</body>
+</html>
